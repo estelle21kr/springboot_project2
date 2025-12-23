@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.dto.BoardDTO;
 import com.example.demo.entity.Board;
+import org.springframework.data.domain.Page;
 
 public interface BoardService {
     // 추상 메서드만 가능한 인터페이스
@@ -45,4 +46,9 @@ public interface BoardService {
                 .build();
     }
 
+    Long insert(BoardDTO boardDTO);
+
+    Page<BoardDTO> getList(int pageNo);
+
+    BoardDTO getDetail(long bno);
 }
