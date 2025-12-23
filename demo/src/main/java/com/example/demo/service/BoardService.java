@@ -51,4 +51,8 @@ public interface BoardService {
     Page<BoardDTO> getList(int pageNo);
 
     BoardDTO getDetail(long bno);
+
+    Long modify(BoardDTO boardDTO);
+
+    void remove(long bno);
 }
