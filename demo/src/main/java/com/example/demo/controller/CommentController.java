@@ -52,4 +52,12 @@ public class CommentController {
                 : new ResponseEntity<String>("0", HttpStatus.INTERNAL_SERVER_ERROR);
 
     }
+
+    @DeleteMapping("/remove/{cno}")
+    public ResponseEntity<String> remove(@PathVariable("cno") long cno) {
+        commentService.remove(cno);
+        return cno>0? new ResponseEntity<String>("1", HttpStatus.OK)
+                : new ResponseEntity<String>("0", HttpStatus.INTERNAL_SERVER_ERROR);
+
+    }
 }

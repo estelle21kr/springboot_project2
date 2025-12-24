@@ -108,14 +108,36 @@ document.addEventListener('click', (e) => {
 
     }
     if(e.target.classList.contains('del')) {
-        // 삭제 버튼
 
+        // 삭제 버튼
+        let li = e.target.closest('li');
+        removeCommentToServer(li.dataset.cno).then(result => {
+            if(result == "1") {
+                alert("댓글 삭제 성공!");
+            }
+            spreadCommentList(bnoValue);
+        })
     }
 })
 
 
 
 // ---------- 비동기 데이터 함수 ------------
+// remove
+async function removeCommentToServer(cno) {
+    try {
+        const url = "/comment/remove/" + cno;
+        const config = {
+            method: 'delete',
+        }
+        const resp = await fetch(url, config);
+        const result = resp.text();
+        return result;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 // modify
 async function updateCommentToServer(modData){
     try {

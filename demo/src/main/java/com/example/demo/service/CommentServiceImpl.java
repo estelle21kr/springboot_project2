@@ -43,4 +43,9 @@ public class CommentServiceImpl implements CommentService{
         comment.setContent(commentDTO.getContent());
         return comment.getCno();
     }
+
+    @Override
+    public void remove(long cno) {
+        commentRepository.deleteById(cno);
+    }
 }
